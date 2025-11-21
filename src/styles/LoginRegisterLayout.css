@@ -1,0 +1,66 @@
+.auth-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Left/Right halves */
+.auth-blue-side {
+  width: 50%;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: white;
+}
+
+.auth-white-side {
+  width: 50%;
+  background-color: var(--surface);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card in the blue side (white card) */
+.auth-card {
+  width: var(--max-width-card);
+  padding: 40px 34px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Branding area inside blue side (top-left) */
+.brand {
+  position: absolute;
+  top: 36px;
+  left: 36px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* Heading inside the card */
+.auth-title {
+  font-size: 24px;
+  margin: 0 0 6px 0;
+  color: #0b1220;
+}
+.auth-sub { margin: 0 0 18px 0; color: var(--muted); }
+
+/* Link-like small text in blue side (example) */
+.blue-side-text { color: rgba(255,255,255,0.95); font-size:14px; }
+
+/* Place for the white side image */
+.white-side-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
