@@ -16,31 +16,53 @@ export default function RegisterForm() {
     e.preventDefault();
     setError('');
     if (!name || !email || !password) {
-      setError('Completa todos los campos.');
+      setError('Por favor completa todos los campos.');
       return;
     }
-    // lógica de registro aquí
     console.log('register', { name, email, password });
-    navigate('/login');
+    navigate('/');
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <H1>Crear cuenta</H1>
-      <Small>Regístrate para empezar</Small>
+    <div className="login-card"> 
+      <H1 className="auth-title">Crear cuenta en "name"</H1>
+      <Small className="auth-sub">Regístrate para gestionar tu cuenta.</Small>
 
-      <div style={{ height: 10 }} />
+      <form onSubmit={handleSubmit}>
+        <div style={{ height: 10 }} />
 
-      <InputGroup label="Nombre" placeholder="Tu nombre" value={name} onChange={e => setName(e.target.value)} />
-      <InputGroup label="E-mail" placeholder="tu@correo.com" value={email} onChange={e => setEmail(e.target.value)} />
-      <InputGroup label="Contraseña" placeholder="********" type="password" value={password} onChange={e => setPassword(e.target.value)} />
+        <InputGroup 
+          label="Nombre" 
+          placeholder="Tu nombre" 
+          value={name} 
+          onChange={e => setName(e.target.value)} 
+        />
+        <InputGroup 
+          label="Email" 
+          placeholder="tu@correo.com" 
+          value={email} 
+          onChange={e => setEmail(e.target.value)} 
+        />
+        <InputGroup 
+          label="Contraseña" 
+          placeholder="••••••••" 
+          type="password" 
+          value={password} 
+          onChange={e => setPassword(e.target.value)} 
+        />
 
-      {error && <div style={{ color: 'crimson', marginBottom: 8 }}>{error}</div>}
+        {error && <div style={{ color: 'crimson', marginBottom: 8 }}>{error}</div>}
 
-      <div style={{ display: 'flex', gap: 10, marginTop: 12 }}>
-        <Button className="btn-primary" type="submit">Registrarse</Button>
-        <Link to="/login" style={{ alignSelf: 'center', marginLeft: 'auto', color: 'var(--primary)', fontWeight: 600 }}>Iniciar sesión</Link>
+        <Button className="button-clase" type="submit" style={{ marginTop: '20px' }}>
+          Registrarse
+        </Button> 
+      </form>
+    
+      <div className="separator">O</div>
+      <div className="register-link-container">
+        ¿Ya tienes una cuenta? <Link to="/">Iniciar sesión</Link>
       </div>
-    </form>
+
+    </div>
   );
 }

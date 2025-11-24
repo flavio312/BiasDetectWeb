@@ -10,7 +10,6 @@ export default function RegisterTemplate() {
       </div>
 
       <div className="auth-blue-side">
-        <div className="brand">🏷 TuMarca</div>
         <div className="auth-card">
           <RegisterForm />
         </div>

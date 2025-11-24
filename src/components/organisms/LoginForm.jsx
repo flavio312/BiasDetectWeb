@@ -14,38 +14,46 @@ export default function LoginForm() {
   function handleSubmit(e) {
     e.preventDefault();
     setError('');
-    // ejemplo simple: validar
     if (!email || !password) {
       setError('Por favor completa todos los campos.');
       return;
     }
-    // Aquí pondrías tu lógica de autenticación
     console.log('login', { email, password });
-    // redirigir demo
-    navigate('/'); // cambiar según tu routing
+    navigate('/');
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <H1>Bienvenido</H1>
-      <Small>Inicia sesión en tu cuenta</Small>
+    <div className="login-card">
+      <H1 className="auth-title">Iniciar sesión en "name"</H1>
+      <Small className="auth-sub">Inicie sesión para gestionar su cuenta.</Small>
 
-      <div style={{ height: 10 }} />
+      <form onSubmit={handleSubmit}>
+        <div style={{ height: 10 }} />
 
-      <InputGroup label="E-mail" placeholder="tu@correo.com" value={email} onChange={e => setEmail(e.target.value)} />
-      <InputGroup label="Contraseña" placeholder="********" type="password" value={password} onChange={e => setPassword(e.target.value)} />
+        <InputGroup 
+          label="Email" 
+          placeholder="@ web@plumweb.ru" 
+          value={email} 
+          onChange={e => setEmail(e.target.value)} 
+        />
+        <InputGroup 
+          label="Contraseña" 
+          placeholder="••••••••" 
+          type="password" 
+          value={password} 
+          onChange={e => setPassword(e.target.value)}
+        />
 
-      {error && <div style={{ color: 'crimson', marginBottom: 8 }}>{error}</div>}
+        {error && <div style={{ color: 'crimson', marginBottom: 8 }}>{error}</div>}
 
-      <div style={{ display: 'flex', gap: 10, marginTop: 12 }}>
-        <Button className="btn-primary" type="submit">Entrar</Button>
-        <Link to="/register" style={{ alignSelf: 'center', marginLeft: 'auto', color: 'var(--primary)', fontWeight: 600 }}>Crear cuenta</Link>
+        <Button className="button-clase" type="submit">Iniciar sesión</Button> 
+      </form>
+      
+      <div className="separator">O</div>
+
+      <div className="register-link-container">
+        ¿No tiene una cuenta? <Link to="/register">Regístrese</Link>
       </div>
-
-      <div style={{ height: 10 }} />
-      <div className="small" style={{ marginTop: 8 }}>
-        ¿Olvidaste tu contraseña? <a href="#" style={{ color: 'var(--primary)', textDecoration: 'none' }}>Recuperar</a>
-      </div>
-    </form>
+    </div>
   );
 }

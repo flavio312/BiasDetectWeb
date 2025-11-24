@@ -6,7 +6,6 @@ export default function LoginTemplate() {
   return (
     <div className="auth-layout">
       <div className="auth-blue-side">
-        <div className="brand">🏷 TuMarca</div>
         <div className="auth-card">
           <LoginForm />
         </div>

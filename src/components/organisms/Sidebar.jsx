@@ -12,7 +12,6 @@ export default function Sidebar(){
         <NavLink to="/stats" className={({isActive})=> isActive? 'active':''}><Icon emoji={'📈'} /><span>Stats</span></NavLink>
         <NavLink to="/chat" className={({isActive})=> isActive? 'active':''}><Icon emoji={'💬'} /><span>Chat</span></NavLink>
         <NavLink to="/history" className={({isActive})=> isActive? 'active':''}><Icon emoji={'📜'} /><span>History</span></NavLink>
-        <NavLink to="/settings" className={({isActive})=> isActive? 'active':''}><Icon emoji={'⚙️'} /><span>Settings</span></NavLink>
       </nav>
 
       <div style={{marginTop:'auto'}}>
