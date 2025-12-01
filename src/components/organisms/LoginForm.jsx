@@ -18,8 +18,7 @@ export default function LoginForm() {
       setError('Por favor completa todos los campos.');
       return;
     }
-    console.log('login', { email, password });
-    navigate('/');
+    navigate('/home');
   }
 
   return (
