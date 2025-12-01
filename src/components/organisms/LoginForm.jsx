@@ -3,7 +3,7 @@ import { H1, Small } from '../atoms/Typography';
 import InputGroup from '../molecules/InputGroup';
 import Button from '../atoms/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import '../../styles/LoginRegisterLayout.css';
+import '../styles/LoginRegisterLayout.css';
 
 export default function LoginForm() {
   const [email, setEmail] = React.useState('');
@@ -32,7 +32,7 @@ export default function LoginForm() {
 
         <InputGroup 
           label="Email" 
-          placeholder="@ web@plumweb.ru" 
+          placeholder="web@plumweb.ru" 
           value={email} 
           onChange={e => setEmail(e.target.value)} 
         />

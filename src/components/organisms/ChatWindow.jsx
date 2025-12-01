@@ -2,6 +2,7 @@ import React from 'react';
 import ChatBubble from '../molecules/ChatBubble';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
+import '../styles/chatWindow.css'
 
 export default function ChatWindow(){
   const [messages,setMessages] = React.useState([
@@ -25,7 +26,7 @@ export default function ChatWindow(){
       <div style={{height:12}} />
       <div className="chat-input">
         <Input placeholder="Message chat" value={text} onChange={e=>setText(e.target.value)} />
-        <Button className={'btn-primary'} onClick={send}>Send</Button>
+        <Button className="btn-primary" onClick={send}>Send</Button>
       </div>
     </div>
   )

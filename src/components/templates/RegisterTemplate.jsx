@@ -1,6 +1,6 @@
 import React from 'react';
 import RegisterForm from '../organisms/RegisterForm';
-import '../../styles/LoginRegisterLayout.css';
+import '../styles/LoginRegisterLayout.css';
 
 export default function RegisterTemplate() {
   return (

@@ -3,7 +3,7 @@ import { H1, Small } from '../atoms/Typography';
 import InputGroup from '../molecules/InputGroup';
 import Button from '../atoms/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import '../../styles/LoginRegisterLayout.css';
+import '../styles/LoginRegisterLayout.css';
 
 export default function RegisterForm() {
   const [name, setName] = React.useState('');

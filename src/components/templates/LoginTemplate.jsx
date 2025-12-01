@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from '../organisms/LoginForm';
-import '../../styles/LoginRegisterLayout.css';
+import '../styles/LoginRegisterLayout.css';
 
 export default function LoginTemplate() {
   return (
