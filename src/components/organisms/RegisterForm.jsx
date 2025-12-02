@@ -5,6 +5,14 @@ import Button from '../atoms/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/LoginRegisterLayout.css';
 
+// Función de utilidad para validar el formato del correo electrónico
+// Debe contener un @ y terminar con un punto seguido de 2 o más caracteres (dominio)
+const validateEmail = (email) => {
+  // Expresión regular para un formato de correo simple
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  return regex.test(email);
+};
+
 export default function RegisterForm() {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
@@ -15,11 +23,28 @@ export default function RegisterForm() {
   function handleSubmit(e) {
     e.preventDefault();
     setError('');
+
+    // --- 1. Validar campos vacíos (incluyendo Nombre) ---
     if (!name || !email || !password) {
-      setError('Por favor completa todos los campos.');
+      setError('Por favor, completa todos los campos (Nombre, Email y Contraseña).');
       return;
     }
+
+    // --- 2. Validar formato del correo electrónico (@ y .dominio) ---
+    if (!validateEmail(email)) {
+      setError('El correo electrónico debe ser válido (ej: usuario@dominio.com).');
+      return;
+    }
+
+    // --- 3. Validar longitud mínima de la contraseña (mínimo 6 caracteres) ---
+    if (password.length < 6) {
+      setError('La contraseña debe tener al menos 6 caracteres.');
+      return;
+    }
+
+    // Si todas las validaciones pasan
     console.log('register', { name, email, password });
+    // Aquí iría tu lógica de registro real (ej. llamada a una API)
     navigate('/');
   }
 
@@ -51,7 +76,7 @@ export default function RegisterForm() {
           onChange={e => setPassword(e.target.value)} 
         />
 
-        {error && <div style={{ color: 'crimson', marginBottom: 8 }}>{error}</div>}
+        {error && <div style={{ color: 'crimson', marginBottom: 8, fontWeight: 'bold' }}>{error}</div>}
 
         <Button className="button-clase" type="submit" style={{ marginTop: '20px' }}>
           Registrarse

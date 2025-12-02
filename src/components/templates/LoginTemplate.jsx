@@ -12,7 +12,7 @@ export default function LoginTemplate() {
       </div>
 
       <div className="auth-white-side">
-        {/* Espacio para tu imagen (opción D: vacío para que subas la tuya) */}
+        <img src="public/bias.jpeg" alt="" />
       </div>
     </div>
   );

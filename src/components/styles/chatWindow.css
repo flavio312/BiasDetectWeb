@@ -5,18 +5,17 @@
     font-size: 15px;
     line-height: 1.4;
     word-wrap: break-word;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Sombra sutil para "levantar" */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05); 
 }
-
 
 .chat-area {
     background-color: #ffffff;
-    border-radius: 16px; /* Más redondeado */
-    padding: 20px; /* Más espacio interno */
-    min-height: 350px; /* Le da más altura al inicio */
-    max-height: 60vh; /* Usa unidades de viewport para que sea responsivo */
+    border-radius: 16px;
+    padding: 20px;
+    min-height: 350px;
+    max-height: 60vh;
     overflow-y: auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Sombra más pronunciada pero suave */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     display: flex;
     flex-direction: column;
     gap: 12px;

@@ -1,7 +1,4 @@
-
-import React from 'react';
 import DashboardTemplate from '../components/templates/DashboardTemplate';
-import NavBar from '../components/organisms/NavBar';
 import Card from '../components/molecules/Card';
 import StatTile from '../components/molecules/StatTile';
 

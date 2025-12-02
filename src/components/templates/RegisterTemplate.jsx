@@ -6,7 +6,7 @@ export default function RegisterTemplate() {
   return (
     <div className="auth-layout">
       <div className="auth-white-side">
-        {/* Espacio para tu imagen */}
+        <img src="public/bias.jpeg" alt="" />
       </div>
 
       <div className="auth-blue-side">

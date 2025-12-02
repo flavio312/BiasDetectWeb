@@ -1,7 +1,5 @@
-import React from 'react';
 import DashboardTemplate from '../components/templates/DashboardTemplate';
 import StatTile from '../components/molecules/StatTile';
-import NavBar from '../components/organisms/NavBar';
 
 export default function StatsPage(){
   return (
