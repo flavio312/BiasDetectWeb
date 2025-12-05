@@ -12,7 +12,7 @@ export default function LoginTemplate() {
       </div>
 
       <div className="auth-white-side">
-        <img src="public/bias.jpeg" alt="" />
+        <img src="bias.jpeg" alt="" />
       </div>
     </div>
   );

@@ -5,10 +5,7 @@ import Button from '../atoms/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/LoginRegisterLayout.css';
 
-// Función de utilidad para validar el formato del correo electrónico
-// Debe contener un @ y terminar con un punto seguido de 2 o más caracteres (dominio)
 const validateEmail = (email) => {
-  // Expresión regular para un formato de correo simple
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   return regex.test(email);
 };
@@ -20,37 +17,48 @@ export default function RegisterForm() {
   const [error, setError] = React.useState('');
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setError('');
 
-    // --- 1. Validar campos vacíos (incluyendo Nombre) ---
     if (!name || !email || !password) {
       setError('Por favor, completa todos los campos (Nombre, Email y Contraseña).');
       return;
     }
 
-    // --- 2. Validar formato del correo electrónico (@ y .dominio) ---
     if (!validateEmail(email)) {
       setError('El correo electrónico debe ser válido (ej: usuario@dominio.com).');
       return;
     }
 
-    // --- 3. Validar longitud mínima de la contraseña (mínimo 6 caracteres) ---
     if (password.length < 6) {
       setError('La contraseña debe tener al menos 6 caracteres.');
       return;
     }
 
-    // Si todas las validaciones pasan
-    console.log('register', { name, email, password });
-    // Aquí iría tu lógica de registro real (ej. llamada a una API)
+    try{
+      const response = await fetch('https://microservices-gamma.vercel.app/auth/register', {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json',
+        },body: JSON.stringify({ name, email, password }),
+      });
+      if (!response.ok) {
+        throw new Error("Credenciales inválidas");
+      }
+      const data = await response.json();
+      console.log('Respuesta del servidor:', data);
+      navigate('/');
+    }catch(error){
+      setError('Error al registrarse. Por favor, inténtalo de nuevo.');
+      return;
+    }
     navigate('/');
   }
 
   return (
     <div className="login-card"> 
-      <H1 className="auth-title">Crear cuenta en "name"</H1>
+      <H1 className="auth-title">Crear cuenta en "BiasDetect"</H1>
       <Small className="auth-sub">Regístrate para gestionar tu cuenta.</Small>
 
       <form onSubmit={handleSubmit}>

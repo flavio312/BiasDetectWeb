@@ -5,10 +5,7 @@ import Button from '../atoms/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/LoginRegisterLayout.css';
 
-// Función de utilidad para validar el formato del correo electrónico
-// Debe contener un @ y terminar con un punto seguido de 2 o más caracteres (dominio)
 const validateEmail = (email) => {
-  // Expresión regular para un formato de correo simple
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   return regex.test(email);
 };
@@ -19,37 +16,48 @@ export default function LoginForm() {
   const [error, setError] = React.useState('');
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setError('');
 
-    // --- 1. Validar campos vacíos ---
     if (!email || !password) {
       setError('Por favor, completa todos los campos.');
       return;
     }
 
-    // --- 2. Validar formato del correo electrónico ---
     if (!validateEmail(email)) {
       setError('El correo electrónico debe ser válido (ej: usuario@dominio.com).');
       return;
     }
 
-    // --- 3. Validar longitud mínima de la contraseña ---
     if (password.length < 6) {
       setError('La contraseña debe tener al menos 6 caracteres.');
       return;
     }
 
-    // Si todas las validaciones pasan
-    console.log('Iniciando sesión con:', { email, password });
-    // Aquí iría tu lógica de autenticación real (ej. llamada a una API)
-    navigate('/home');
+    try{
+      const response = await fetch('https://microservices-gamma.vercel.app/auth/access', {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json',
+        },body: JSON.stringify({ email, password }),
+      });
+      if (!response.ok) {
+        throw new Error("Credenciales inválidas");
+      }
+      const data = await response.json();
+      console.log('Respuesta del servidor:', data);
+      localStorage.setItem('token', data.token);
+      navigate('/home');
+    }catch(error){
+      setError('Error al iniciar sesión. Por favor, inténtalo de nuevo.');
+      return;
+    }
   }
 
   return (
     <div className="login-card">
-      <H1 className="auth-title">Iniciar sesión en "name"</H1>
+      <H1 className="auth-title">Iniciar sesión en "BiasDetect"</H1>
       <Small className="auth-sub">Inicie sesión para gestionar su cuenta.</Small>
 
       <form onSubmit={handleSubmit}>
