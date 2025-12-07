@@ -45,9 +45,7 @@ export default function LoginForm() {
       if (!response.ok) {
         throw new Error("Credenciales inválidas");
       }
-      const data = await response.json();
-      console.log('Respuesta del servidor:', data);
-      localStorage.setItem('token', data.token);
+      console.log('Login exitoso');
       navigate('/home');
     }catch(error){
       setError('Error al iniciar sesión. Por favor, inténtalo de nuevo.');
